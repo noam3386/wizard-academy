@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase";
+import { supabase } from "../supabase";
 import { ROOMS } from "../data";
 import { Lock, Star, ChevronRight, LogOut } from "lucide-react";
 
@@ -24,7 +23,7 @@ export default function LevelMap({ user, progress, onSelectLevel }) {
           borderBottom: "1px solid rgba(124,58,237,0.3)",
           backdropFilter: "blur(10px)",
         }}>
-        <button onClick={() => signOut(auth)}
+        <button onClick={() => supabase.auth.signOut()}
           className="flex items-center gap-2 px-3 py-2 rounded-xl active:scale-95 transition-all"
           style={{ background: "rgba(239,68,68,0.15)", color: "#fca5a5", border: "1px solid rgba(239,68,68,0.3)" }}>
           <LogOut size={16} />
